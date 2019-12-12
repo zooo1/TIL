@@ -120,13 +120,15 @@ whiteDog.bark(); // 흰둥이: 멍멍!
 
 
 
-### Props
+## Props
 
 properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소
 
 해당 컴포넌트를 불러와 사용하는 부모 컴포넌트(현 상황에서는 App 컴포넌트가 부모 컴포넌트이다)에서 설정할 수 있다.
 
+* JSX 내부에서 Props rendering
 
+  component 함수의 파라미터로 받아와서 사용할 수 있다.
 
 ### 태그 사이의 내용을 보여주는 children
 
@@ -270,3 +272,12 @@ class MyComponent extends Component {
 
 클래스형 컴포넌트에서 defaultProps와 propsTypes를 설정할 때 class 내부에서 지정하는 방법도 있다.
 
+
+
+## State
+
+컴포넌트 내부에서 바뀔 수 있는 값 
+
+props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값이면 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있다. props를 바꾸려면 부모 컴포넌트에서 바꾸어 주어야 한다.
+
+리액트에는 두 가지 종류의 state가 있다.
