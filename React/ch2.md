@@ -18,7 +18,7 @@
 
 꼭 div 요소를 사용하지 않아도 된다. 
 
-```react
+```javascript
 import React, {Fragment} from 'react';
 
 function App(){
@@ -33,7 +33,7 @@ function App(){
 export default App;
 ```
 
-```react
+```javascript
 import React, {Fragment} from 'react';
 
 function App(){
