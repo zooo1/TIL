@@ -50,7 +50,7 @@ export default App;
 
 ### 자바스크립트 표현 
 
-```react
+```javascript
 import React, {Fragment} from 'react';
 
 function App(){
@@ -72,7 +72,7 @@ export default App;
 
 JSX 내부의 자바스크립트 표현식에서 if 문을 사용할 수는 없다. 하지만 다른 내용을 렌더링해야 할 때는 JSX 밖에서 if 문을 사용하여 사전에 값을 설정하거나 {} 안에 조건부 연산자(삼항 연산자)를 사용하면 된다. 
 
-```react
+```javascript
 import React from 'react';
 
 function App(){
@@ -90,7 +90,7 @@ function App(){
 
 ### AND 연산자(&&)를 사용한 조건부 렌더링
 
-```react
+```javascript
 import React from 'react';
 
 function App(){
@@ -107,7 +107,7 @@ function App(){
 
 DOM 요소에 스타일을 적용할 때는 문자열 형태로 넣는 것이 아니라 객체 형태로 넣어 주어야 한다. 이 때, 카멜 표기법으로 작성해야 한다. 
 
-```react
+```javascript
 import React from 'react';
 
 function App(){
@@ -136,7 +136,7 @@ function App(){
 
 
 
-```react
+```javascript
 // src/App.js
 import React from 'react';
 
@@ -158,7 +158,7 @@ HTML 코드를 작성할 때 `<br>` `<input>` 등의 태그는 닫지 않아도 
 
 JSX 내부에서 주석을 작성할 때는 {/* ... */ }와 같은 형식으로 작성한다. 
 
-```react
+```javascript
 import React from 'react';
 
 function App(){
