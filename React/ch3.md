@@ -21,7 +21,7 @@
 
   
 
-```react
+```javascript
 /*App.js*/
 import React, { Component } from "react";
 import "./App.css";
@@ -142,7 +142,7 @@ properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하
 
 props 값을 조회할 때마다 props.name, props.children 과 같이 `props`라는 키워드를 앞에 붙여주고 있는데 이러한 작업을 더 편하게 하기 위해 ES6의 비구조화 할당 문법을 사용하여 내부 값을 바로 추출하는 방법을 알아보자.
 
-```react
+```javascript
 // MyComponent.js
 import React from "react";
 
@@ -182,7 +182,7 @@ const MyComponent = ({ name, children }) => {
 
 컴포넌트의 필수 props를 지정하거나 props의 타입(type)을 지정할 때는 propTypes를 사용한다. 컴포넌트의 propTypes를 지정하는 방식은 defaultProp을 설정하는 방법과 비슷하다. 
 
-```react
+```javascript
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -253,7 +253,7 @@ propTypes를 지정할 때 뒤에 isRequired를 붙여주면 된다.
 
 render 함수에서 this.props를 조회하면 된다. defaulProps와 propsTypes는 똑같은 방식으로 설정할 수 있다. 
 
-```react
+```javascript
 class MyComponent extends Component {
   render() {
     const { name, favoriteNumber, children } = this.props;
