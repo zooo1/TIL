@@ -280,4 +280,146 @@ class MyComponent extends Component {
 
 props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값이면 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있다. props를 바꾸려면 부모 컴포넌트에서 바꾸어 주어야 한다.
 
-리액트에는 두 가지 종류의 state가 있다.
+```react
+import React, {Component} from 'react';
+
+class Counter extends Component{
+  state ={
+    number: 0
+  }
+
+	handleIncrease = () => {
+    this.setState({
+      number: this.state.number + 1
+    });
+  }
+  
+  handleDecrease = () => {
+    this.setState({
+      number: this.state.number - 1
+    });
+  }
+  
+  render(){
+    return(
+    <div>
+     	<h1>카운터</h1> 
+        <div>값: {this.state.number}</div>
+        <button onClick={this.handleIncrease}>+</button>
+        <button onClick={this.handleDecrease}>-</button>
+      </div>
+      
+    )
+  }
+}
+
+export default Counter;
+```
+
+* component의 state를 정의할 때는 class fields 문법을 사용한다.
+* class fields를 사용하지 않는다면 constructor에 넣어야한다. (귀찮음)
+
+
+
+### 메소드 작성
+
+arrow 함수를 사용한다. 그렇지 않으면 constructor에서 bind 해주는 작업을 거쳐야한다.(귀찮음)
+
+
+
+### setState
+
+`this.setState`: state에 있는 값을 바꾸기 위해서는 반드시 이 함수를 거쳐야한다. 이 함수가 호출되면 컴포넌트가 리랜더링 되도록 설계되어 있다.
+
+이 함수는 객체로 전달되는 값만 업데이트를 해준다. 객체의 깊숙한 곳 까지 확인할 수 없다. 
+
+```react
+state ={
+  number: 0,
+  foo: {
+    bar: 0,
+    foobar: 1
+  }
+}
+
+this.setState({
+  foo:{
+    foobar: 2
+  }
+}) 
+/*
+state = {
+  number: 0,
+  foo: {
+    foobar: 2
+  }
+}
+*/
+```
+
+foobar 값이 업데이트가 되는 것이 아닌 foo 객체가 바뀌어버린다. 
+
+다음과 같이 해주어야 한다.
+
+```react
+this.setState({
+  number: 0,
+  foo: {
+    ...this.state.foo,
+    foobar: 2
+  }
+})
+```
+
+`...` : 전개연산자. 기존의 객체안에 있는 내용을 해당 위치에 풀어준다.
+
+
+
+#### setState에 객체 대신 함수 전달하기
+
+```react
+// 1. this.state 를 조회하지 않아도 되는 방법
+this.setState(
+	(state) => ({
+    number: state.number + 1
+  })
+)
+
+// 2. 비구조화 할당
+this.setState(
+	({number}) => ({
+    number: number+1
+  })
+)
+
+```
+
+기존에 작성했던 함수를 다른 방식으로 구현해보자!
+
+```react
+	handleIncrease = () => {
+    const {number} = this.state
+    this.setState({
+      number: number + 1
+    });
+  }
+  handleDecrease = () => {
+    this.setState(
+      ({number}) => ({
+      number: number -1
+    })
+   );
+  }
+```
+
+
+
+### 이벤트 설정
+
+리액트서 이벤트 함수를 설정할 때 html과 다른 사항이 있다. 이 점을 꼭 주의해야 한다.
+
+1. 이벤트 이름은 반드시 **camelCase**
+
+   onclick, onmousedown => onClick, onMouseDown
+
+2. 이벤트에 전달해주는 값은 **함수** 여야 한다. 호출해주지 말 것!
